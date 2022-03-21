@@ -1,9 +1,9 @@
-from django.urls import include, path
+from django.urls import path
 
-from api_app.views import MoleculeViews, ActivityView
+from api_app.views import molecule_view, molecule_all_view, activity_view
 
 urlpatterns = [
-    path('molecules', MoleculeViews.as_view()),
-    path('molecules/<int:molecule_id>', MoleculeViews.as_view()),
-    path('activity/<int:molecule_id>', ActivityView.as_view())
+    path('molecules', molecule_all_view),
+    path('molecules/<int:molecule_id>', molecule_view),
+    path('activity/<int:molecule_id>', activity_view)
 ]
