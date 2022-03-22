@@ -37,4 +37,4 @@ class ApiAppTest(TestCase):
         response = client.get(reverse('get_all_molecules'), {'page_size': 2})
         self.assertEqual(response.status_code, status.HTTP_200_OK)
         self.assertTrue(response.data['count'] == 4)
-        self.assertTrue(response.data['results'].__len__() == 2)
+        self.assertTrue(len(response.data['results']) == 2)
