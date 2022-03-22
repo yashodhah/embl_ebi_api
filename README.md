@@ -32,7 +32,7 @@ Endpoint |HTTP Method | Result
 The API supports pagination, by default responses have a page_size=10 and the maximum value of the page size is 1000
 ```
 http http://127.0.0.1:8000/molecules?page=1&page_size=20"
-http http://127.0.0.1:8000/activity?page=1&page_size=30"
+http http://127.0.0.1:8000/activity/{molecule_id}?page=1&page_size=30"
 ```
 
 ### Run the API server
