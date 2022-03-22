@@ -5,6 +5,7 @@ from rest_framework.response import Response
 
 from api_app.models import Molecule, Activity
 from api_app.serializers import MoleculeSerializer, ActivitySerializer
+from api_app.settings import DEFAULT_PAGE_SIZE, MAX_PAGE_SIZE
 
 
 @api_view(('GET',))
@@ -42,20 +43,11 @@ def activity_view(request, molecule_id):
     return paginator.get_paginated_response(serializer.data)
 
 
-# TODO: enhance this logic
 def get_paginator(page_size):
-    default_page_size = '10'
-    max_page_size = 100
-
-    page_size = page_size or default_page_size
-
-    if str.isdigit(page_size):
-        page_size = int(page_size)
-
-        if page_size > max_page_size:
-            page_size = max_page_size
-    else:
-        page_size = default_page_size
+    try:
+        page_size = min(int(page_size), MAX_PAGE_SIZE)
+    except Exception:
+        page_size = DEFAULT_PAGE_SIZE
 
     paginator = PageNumberPagination()
     paginator.page_size = page_size
