@@ -25,7 +25,7 @@ pip install -r requirements.txt
 Endpoint |HTTP Method | Result
 --- | --- |---
 `molecules` | GET | Get all molecules 
-`molecules/:id` | GET | Get a single molecule by id
+`molecule/:id` | GET | Get a single molecule by id
 `activity/:id`| GET | Get activities by molecule id
 
 ### Pagination
