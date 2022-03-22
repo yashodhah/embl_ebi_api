@@ -15,7 +15,7 @@ def molecule_view(request, molecule_id):
 
         return Response(serializer.data)
     except Molecule.DoesNotExist:
-        return Response({"res": "Molecule does not exists"}, status=status.HTTP_400_BAD_REQUEST)
+        return Response({"res": "Molecule does not exists"}, status=status.HTTP_404_NOT_FOUND)
 
 
 @api_view(('GET',))
